@@ -1,0 +1,47 @@
+[
+    {
+        "fund_name": "Bandhan Small Cap Fund",
+        "expense_ratio": "0.60%",
+        "exit_load": "A fee payable to a mutual fund house for exiting a fund (fully or partially) before the completion of a specified period from the date of investment.",
+        "minimum_sip": "₹100",
+        "nav": "₹55.47",
+        "benchmark": "BSE 250 SmallCap Total Return Index",
+        "investment_objective": "The Scheme seeks to generate long term capital appreciation by investing predominantly in equities and equity linked securities of small cap segment."
+    },
+    {
+        "fund_name": "Parag Parikh Long Term Value Fund",
+        "expense_ratio": "0.70%",
+        "exit_load": "A fee payable to a mutual fund house for exiting a fund (fully or partially) before the completion of a specified period from the date of investment.",
+        "minimum_sip": "₹1,000",
+        "nav": "₹91.30",
+        "benchmark": "NIFTY 500 Total Return Index",
+        "investment_objective": "The scheme aims to achieve long-term capital appreciation by investing primarily in equity and equity related instruments."
+    },
+    {
+        "fund_name": "HDFC Mid-Cap Opportunities Fund",
+        "expense_ratio": "0.75%",
+        "exit_load": "A fee payable to a mutual fund house for exiting a fund (fully or partially) before the completion of a specified period from the date of investment.",
+        "minimum_sip": "₹100",
+        "nav": "₹229.59",
+        "benchmark": "NIFTY Midcap 150 Total Return Index",
+        "investment_objective": "The scheme seeks to provide long-term capital appreciation/income by investing predominantly in Mid-Cap companies."
+    },
+    {
+        "fund_name": "HDFC Flexi Cap Fund",
+        "expense_ratio": "0.78%",
+        "exit_load": "A fee payable to a mutual fund house for exiting a fund (fully or partially) before the completion of a specified period from the date of investment.",
+        "minimum_sip": "₹100",
+        "nav": "₹2,237.77",
+        "benchmark": "NIFTY 500 Total Return Index",
+        "investment_objective": "The scheme seeks to generate capital appreciation / income from a portfolio, predominantly invested in equity & equity related instruments."
+    },
+    {
+        "fund_name": "Nippon India Large Cap Fund",
+        "expense_ratio": "0.92%",
+        "exit_load": "A fee payable to a mutual fund house for exiting a fund (fully or partially) before the completion of a specified period from the date of investment.",
+        "minimum_sip": "₹100",
+        "nav": "₹101.36",
+        "benchmark": "BSE 100 Total Return Index",
+        "investment_objective": "The scheme seeks to generate long term capital appreciation by investing predominantly into equity and equity related instruments of large cap companies."
+    }
+]

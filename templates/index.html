@@ -1,0 +1,505 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Mutual Fund Assistant | Precision Intelligence</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "primary-container": "#00d09c",
+                    "on-tertiary": "#ffffff",
+                    "on-surface-variant": "#3c4a43",
+                    "surface-container": "#e7eefe",
+                    "surface-container-high": "#e2e8f8",
+                    "secondary-fixed-dim": "#c8c6c5",
+                    "on-tertiary-fixed": "#191c1d",
+                    "tertiary-fixed": "#e1e3e4",
+                    "secondary-fixed": "#e5e2e1",
+                    "on-primary-fixed": "#002116",
+                    "on-tertiary-fixed-variant": "#454748",
+                    "on-background": "#151c27",
+                    "background": "#f9f9ff",
+                    "primary-fixed-dim": "#2fe0aa",
+                    "surface-tint": "#006c4f",
+                    "surface-container-highest": "#dce2f3",
+                    "surface": "#f9f9ff",
+                    "on-secondary-fixed": "#1c1b1b",
+                    "primary-fixed": "#59fdc5",
+                    "surface-dim": "#d3daea",
+                    "secondary": "#5f5e5e",
+                    "inverse-primary": "#2fe0aa",
+                    "surface-bright": "#f9f9ff",
+                    "error": "#ba1a1a",
+                    "tertiary-container": "#b6b8b9",
+                    "surface-container-low": "#f0f3ff",
+                    "outline": "#6b7b72",
+                    "outline-variant": "#bacac1",
+                    "inverse-on-surface": "#ebf1ff",
+                    "tertiary": "#5c5f60",
+                    "secondary-container": "#e5e2e1",
+                    "surface-variant": "#dce2f3",
+                    "primary": "#006c4f",
+                    "error-container": "#ffdad6",
+                    "on-secondary-container": "#656464",
+                    "on-error-container": "#93000a",
+                    "on-tertiary-container": "#46494a",
+                    "on-secondary-fixed-variant": "#474646",
+                    "on-primary": "#ffffff",
+                    "on-primary-fixed-variant": "#00513b",
+                    "tertiary-fixed-dim": "#c5c7c8",
+                    "on-error": "#ffffff",
+                    "on-secondary": "#ffffff",
+                    "inverse-surface": "#2a313d",
+                    "surface-container-lowest": "#ffffff",
+                    "on-primary-container": "#00533c",
+                    "on-surface": "#151c27"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "gutter": "24px",
+                    "stack-md": "16px",
+                    "margin-mobile": "16px",
+                    "stack-sm": "8px",
+                    "container-max": "1200px",
+                    "stack-lg": "32px"
+            },
+            "fontFamily": {
+                    "label-md": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "headline-lg-mobile": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "headline-xl": ["Inter"],
+                    "body-md": ["Inter"],
+                    "body-lg": ["Inter"]
+            },
+            "fontSize": {
+                    "label-md": ["12px", {"lineHeight": "1", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                    "headline-lg": ["24px", {"lineHeight": "1.3", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "headline-lg-mobile": ["20px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                    "headline-md": ["20px", {"lineHeight": "1.4", "fontWeight": "500"}],
+                    "headline-xl": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                    "body-md": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "body-lg": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased; }
+        .glass-panel {
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+        .custom-scrollbar::-webkit-scrollbar { width: 4px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #e5e7eb; border-radius: 10px; }
+        .message-fade-in { animation: fadeIn 0.3s ease-out forwards; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    
+        .markdown-body table { width: 100%; text-align: left; border-collapse: collapse; margin: 1rem 0; border-radius: 0.5rem; overflow: hidden; border: 1px solid rgba(186, 202, 193, 0.2); }
+        .markdown-body th { padding: 1rem; background-color: #f0f3ff; font-weight: bold; font-size: 12px; text-transform: uppercase; letter-spacing: 0.05em; }
+        .markdown-body td { padding: 1rem; border-top: 1px solid rgba(186, 202, 193, 0.1); font-size: 14px; }
+        .markdown-body tr:hover { background-color: rgba(240, 243, 255, 0.3); }
+        .markdown-body p { margin-bottom: 1rem; }
+        .markdown-body p:last-child { margin-bottom: 0; }
+        .markdown-body ul { list-style-type: disc; margin-left: 1.5rem; margin-bottom: 1rem; }
+</style>
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</head>
+<body class="bg-background text-on-surface flex h-screen overflow-hidden">
+<!-- SideNavBar (Shared Component Identity) -->
+<aside class="bg-surface hidden md:flex flex-col h-full border-r border-outline-variant/20 duration-200 ease-in-out docked-left w-80 shrink-0" id="sidebar">
+<div class="p-6 flex flex-col h-full">
+<!-- Brand Logo -->
+<div class="mb-stack-lg flex items-center gap-3">
+<div class="w-10 h-10 bg-primary rounded-xl flex items-center justify-center">
+<span class="material-symbols-outlined text-white text-2xl" data-icon="insights">insights</span>
+</div>
+<div>
+<h1 class="font-headline-lg text-headline-lg font-black text-primary leading-tight">Mutual Fund AI</h1>
+<p class="font-label-md text-label-md text-secondary">Precision Intelligence</p>
+</div>
+</div>
+<!-- CTA -->
+<button id="new-chat-btn" class="w-full mb-stack-lg flex items-center justify-center gap-2 bg-primary-container text-on-primary-container py-3 px-4 rounded-full font-medium hover:opacity-90 transition-all active:scale-95">
+<span class="material-symbols-outlined text-[20px]" data-icon="add">add</span>
+<span class="">New Chat</span>
+</button>
+<!-- Nav History -->
+<nav class="flex-1 overflow-y-auto custom-scrollbar space-y-2" id="chat-history-list">
+<!-- Chat history will appear here -->
+</nav>
+</div>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 flex flex-col relative h-full bg-surface-container-lowest">
+<!-- TopAppBar (Shared Component Identity) -->
+<header class="fixed top-0 right-0 left-0 md:left-80 z-50 flex justify-between items-center px-gutter py-4 bg-surface/70 backdrop-blur-xl shadow-sm">
+<div class="flex items-center gap-4">
+<button class="md:hidden text-primary p-2 active:scale-95 transition-transform" id="mobile-menu-btn">
+<span class="material-symbols-outlined" data-icon="menu">menu</span>
+</button>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary font-bold text-2xl" data-icon="monitoring">monitoring</span>
+<h2 class="font-headline-md text-headline-md font-bold text-primary">Mutual Fund Assistant</h2>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<!-- Top actions removed to adhere to minimalist, functional design -->
+</div>
+</header>
+<!-- Message Area -->
+<div class="flex-1 overflow-y-auto pt-24 pb-32 custom-scrollbar" id="chat-container">
+<div class="max-w-[800px] mx-auto px-margin-mobile md:px-gutter space-y-stack-lg" id="chat-messages">
+
+<div class="flex justify-start message-fade-in">
+    <div class="max-w-[90%] bg-surface border border-on-surface/5 p-6 rounded-2xl rounded-tl-none shadow-[0px_4px_20px_rgba(0,108,79,0.04)]">
+        <div class="flex items-center gap-2 mb-4">
+            <div class="w-8 h-8 bg-primary/10 rounded-lg flex items-center justify-center">
+                <span class="material-symbols-outlined text-primary text-lg" data-icon="smart_toy">smart_toy</span>
+            </div>
+            <span class="font-label-md text-label-md text-primary font-semibold uppercase tracking-wider">Welcome</span>
+        </div>
+        <div class="font-body-lg text-body-lg text-secondary space-y-4 markdown-body">
+            <p>Hello! I am your facts-only Mutual Fund AI Assistant. I can provide accurate, up-to-date data directly from AMFI and fund factsheets.</p>
+            <p>How can I help you today?</p>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+<!-- Floating Input Bar -->
+<div class="fixed bottom-0 right-0 left-0 md:left-80 p-gutter z-40 bg-gradient-to-t from-surface via-surface/80 to-transparent">
+<div class="max-w-[800px] mx-auto relative"><div class="flex flex-wrap items-center justify-center gap-2 mb-4 overflow-x-auto custom-scrollbar pb-1">
+  <button class="px-4 py-2 bg-surface-container-lowest/50 backdrop-blur-sm border border-outline-variant/20 rounded-full text-body-md text-on-surface-variant hover:bg-primary-container/10 hover:border-primary-container/30 transition-all whitespace-nowrap">
+    What is the expense ratio of HDFC...
+  </button>
+  <button class="px-4 py-2 bg-surface-container-lowest/50 backdrop-blur-sm border border-outline-variant/20 rounded-full text-body-md text-on-surface-variant hover:bg-primary-container/10 hover:border-primary-container/30 transition-all whitespace-nowrap">
+    What is the ELSS lock-in period?
+  </button>
+  <button class="px-4 py-2 bg-surface-container-lowest/50 backdrop-blur-sm border border-outline-variant/20 rounded-full text-body-md text-on-surface-variant hover:bg-primary-container/10 hover:border-primary-container/30 transition-all whitespace-nowrap">
+    How do I download my CAS statement?
+  </button>
+</div>
+<div class="glass-panel bg-white/70 shadow-[0px_4px_40px_rgba(0,0,0,0.06)] rounded-[32px] p-2 pr-3 flex items-center gap-2 border border-white/50">
+<!-- Attachment button removed -->
+<textarea class="flex-1 bg-transparent border-none focus:ring-0 text-body-lg font-body-lg py-3 resize-none max-h-40 custom-scrollbar" id="chat-input" placeholder="Ask me anything about HDFC funds..." rows="1"></textarea>
+<button class="w-10 h-10 flex items-center justify-center rounded-full bg-primary-container text-on-primary-container transition-all scale-90 opacity-50 cursor-not-allowed" id="send-btn">
+<span class="material-symbols-outlined font-bold" data-icon="arrow_upward">arrow_upward</span>
+</button>
+</div>
+<p class="text-center text-[10px] text-secondary mt-3 uppercase tracking-widest font-bold opacity-40">AI-generated content. Consult a financial advisor before investing.</p>
+</div>
+</div>
+</main>
+
+
+<script>
+        const textarea = document.getElementById('chat-input');
+        const sendBtn = document.getElementById('send-btn');
+        const sidebar = document.getElementById('sidebar');
+        const mobileBtn = document.getElementById('mobile-menu-btn');
+        const chatMessages = document.getElementById('chat-messages');
+        const chatContainer = document.getElementById('chat-container');
+        const newChatBtn = document.getElementById('new-chat-btn');
+        const chatHistoryList = document.getElementById('chat-history-list');
+
+        // State Management
+        let chatSessions = JSON.parse(localStorage.getItem('chats')) || [];
+        let currentChatId = null;
+
+        const welcomeMessageHTML = `
+            <div class="flex justify-start message-fade-in">
+                <div class="max-w-[90%] bg-surface border border-on-surface/5 p-6 rounded-2xl rounded-tl-none shadow-[0px_4px_20px_rgba(0,108,79,0.04)]">
+                    <div class="flex items-center gap-2 mb-4">
+                        <div class="w-8 h-8 bg-primary/10 rounded-lg flex items-center justify-center">
+                            <span class="material-symbols-outlined text-primary text-lg">smart_toy</span>
+                        </div>
+                        <span class="font-label-md text-label-md text-primary font-semibold uppercase tracking-wider">Welcome</span>
+                    </div>
+                    <div class="font-body-lg text-body-lg text-secondary space-y-4 markdown-body">
+                        <p>Hello! I am your facts-only Mutual Fund AI Assistant. I can provide accurate, up-to-date data directly from AMFI and fund factsheets.</p>
+                        <p>How can I help you today?</p>
+                    </div>
+                </div>
+            </div>
+        `;
+
+        function saveChats() {
+            localStorage.setItem('chats', JSON.stringify(chatSessions));
+            renderSidebar();
+        }
+
+        function renderSidebar() {
+            chatHistoryList.innerHTML = '';
+            chatSessions.forEach(chat => {
+                const isActive = chat.id === currentChatId;
+                const div = document.createElement('div');
+                div.className = `px-2 py-3 rounded-lg font-medium cursor-pointer flex items-center gap-3 transition-all ${isActive ? 'bg-primary-container text-on-primary-container' : 'text-on-surface-variant hover:bg-surface-container'}`;
+                div.innerHTML = `
+                    <span class="material-symbols-outlined">chat_bubble</span>
+                    <span class="truncate">${chat.title}</span>
+                `;
+                div.onclick = () => loadChat(chat.id);
+                chatHistoryList.appendChild(div);
+            });
+        }
+
+        function loadChat(id) {
+            currentChatId = id;
+            chatMessages.innerHTML = '';
+            const session = chatSessions.find(c => c.id === id);
+            if (session) {
+                session.messages.forEach(msg => {
+                    addMessageDOM(msg.content, msg.role, true, msg.sourceUrl, msg.footer);
+                });
+            }
+            renderSidebar();
+            if (window.innerWidth < 768) {
+                sidebar.classList.add('hidden');
+                sidebar.classList.remove('fixed', 'z-[60]', 'inset-0');
+            }
+        }
+
+        newChatBtn.addEventListener('click', () => {
+            currentChatId = null;
+            chatMessages.innerHTML = welcomeMessageHTML;
+            renderSidebar();
+            if (window.innerWidth < 768) {
+                sidebar.classList.add('hidden');
+                sidebar.classList.remove('fixed', 'z-[60]', 'inset-0');
+            }
+        });
+
+        // Auto-expanding textarea
+        textarea.addEventListener('input', function() {
+            this.style.height = 'auto';
+            this.style.height = (this.scrollHeight) + 'px';
+            
+            if (this.value.trim().length > 0) {
+                sendBtn.classList.remove('opacity-50', 'scale-90', 'cursor-not-allowed');
+                sendBtn.classList.add('scale-100', 'hover:shadow-lg', 'active:scale-95');
+            } else {
+                sendBtn.classList.add('opacity-50', 'scale-90', 'cursor-not-allowed');
+                sendBtn.classList.remove('scale-100', 'hover:shadow-lg', 'active:scale-95');
+            }
+        });
+
+        // Mobile Sidebar Toggle
+        mobileBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            sidebar.classList.toggle('hidden');
+            sidebar.classList.toggle('fixed');
+            sidebar.classList.toggle('z-[60]');
+            sidebar.classList.toggle('inset-0');
+        });
+
+        // Close sidebar when clicking outside on mobile
+        document.addEventListener('click', (e) => {
+            if (!sidebar.classList.contains('hidden') && window.innerWidth < 768 && !sidebar.contains(e.target) && !mobileBtn.contains(e.target)) {
+                sidebar.classList.add('hidden');
+                sidebar.classList.remove('fixed', 'z-[60]', 'inset-0');
+            }
+        });
+
+        // Handle example buttons
+        document.querySelectorAll('button').forEach(btn => {
+            if (btn.innerText.includes('expense ratio') || btn.innerText.includes('ELSS') || btn.innerText.includes('CAS')) {
+                btn.addEventListener('click', () => {
+                    let txt = btn.innerText;
+                    if(txt.includes('...')) txt = 'What is the expense ratio of HDFC Flexi Cap Fund?';
+                    textarea.value = txt;
+                    textarea.dispatchEvent(new Event('input'));
+                    sendMessage();
+                });
+            }
+        });
+
+        function addMessageDOM(text, role, isHTML=false, sourceUrl=null, footer=null) {
+            const isUser = role === 'user';
+            const msgDiv = document.createElement('div');
+            msgDiv.className = `flex justify-${isUser ? 'end' : 'start'} message-fade-in`;
+            
+            let innerHTML = '';
+            
+            if (isUser) {
+                innerHTML = `
+                    <div class="max-w-[85%] bg-primary-container text-on-primary-container px-6 py-4 rounded-2xl rounded-tr-none shadow-sm">
+                        <p class="font-body-lg text-body-lg">${text}</p>
+                    </div>
+                `;
+            } else {
+                const content = isHTML ? text : `<p>${text}</p>`;
+                
+                let citationHTML = '';
+                if (sourceUrl || footer) {
+                    citationHTML = '<div class="flex flex-wrap gap-2 pt-4 border-t border-outline-variant/10 mt-4">';
+                    if (sourceUrl) {
+                        let finalUrl = sourceUrl.startsWith('http') ? sourceUrl : 'https://' + sourceUrl;
+                        citationHTML += `
+                        <a href="${finalUrl}" target="_blank" rel="noopener noreferrer" class="flex items-center gap-1 px-3 py-1 bg-surface-container rounded-full text-[10px] font-bold text-primary uppercase tracking-tighter hover:bg-primary-container/20 transition cursor-pointer">
+                            <span class="material-symbols-outlined text-[12px]">link</span>
+                            Source Link
+                        </a>`;
+                    }
+                    if (footer) {
+                        citationHTML += `
+                        <div class="flex items-center gap-1 px-3 py-1 bg-surface-container rounded-full text-[10px] font-bold text-on-surface-variant uppercase tracking-tighter">
+                            <span class="material-symbols-outlined text-[12px]">history</span>
+                            ${footer.replace('Last updated from sources:', '').trim()}
+                        </div>`;
+                    }
+                    citationHTML += '</div>';
+                }
+
+                let iconHTML = role === 'error' ? 'error' : 'smart_toy';
+                let titleHTML = role === 'error' ? 'Error' : 'Analysis Result';
+                let colorClass = role === 'error' ? 'text-error' : 'text-primary';
+                let bgClass = role === 'error' ? 'bg-error/10' : 'bg-primary/10';
+
+                innerHTML = `
+                    <div class="max-w-[90%] bg-surface border border-on-surface/5 p-6 rounded-2xl rounded-tl-none shadow-[0px_4px_20px_rgba(0,108,79,0.04)]">
+                        <div class="flex items-center gap-2 mb-4">
+                            <div class="w-8 h-8 ${bgClass} rounded-lg flex items-center justify-center">
+                                <span class="material-symbols-outlined ${colorClass} text-lg">${iconHTML}</span>
+                            </div>
+                            <span class="font-label-md text-label-md ${colorClass} font-semibold uppercase tracking-wider">${titleHTML}</span>
+                        </div>
+                        <div class="font-body-lg text-body-lg text-secondary space-y-4 markdown-body">
+                            ${content}
+                        </div>
+                        ${citationHTML}
+                    </div>
+                `;
+            }
+            
+            msgDiv.innerHTML = innerHTML;
+            chatMessages.appendChild(msgDiv);
+            chatContainer.scrollTop = chatContainer.scrollHeight;
+        }
+
+        async function sendMessage() {
+            const query = textarea.value.trim();
+            if (!query) return;
+
+            // Remove welcome message on first query of a new chat
+            if (!currentChatId && chatMessages.innerHTML.includes('Welcome')) {
+                chatMessages.innerHTML = '';
+            }
+            
+            // UI updates
+            addMessageDOM(query, 'user');
+            
+            // Initialize chat session if new
+            if (!currentChatId) {
+                currentChatId = Date.now().toString();
+                chatSessions.unshift({
+                    id: currentChatId,
+                    title: query.length > 25 ? query.substring(0, 25) + '...' : query,
+                    messages: []
+                });
+            }
+            
+            // Capture the active chat ID for this request to prevent race conditions
+            const activeChatId = currentChatId;
+            
+            // Find current session and append user message
+            let sessionIndex = chatSessions.findIndex(c => c.id === activeChatId);
+            chatSessions[sessionIndex].messages.push({ role: 'user', content: query });
+            saveChats();
+            
+            textarea.value = '';
+            textarea.style.height = 'auto';
+            sendBtn.classList.add('opacity-50', 'scale-90', 'cursor-not-allowed');
+            sendBtn.classList.remove('scale-100', 'hover:shadow-lg', 'active:scale-95');
+            
+            // Add loading indicator
+            const loadingDiv = document.createElement('div');
+            loadingDiv.id = 'loading-indicator';
+            loadingDiv.className = 'flex justify-start message-fade-in';
+            loadingDiv.innerHTML = `
+                <div class="max-w-[90%] bg-surface border border-on-surface/5 p-6 rounded-2xl rounded-tl-none shadow-[0px_4px_20px_rgba(0,108,79,0.04)]">
+                    <div class="flex items-center gap-2">
+                        <div class="w-8 h-8 bg-primary/10 rounded-lg flex items-center justify-center animate-pulse">
+                            <span class="material-symbols-outlined text-primary text-lg">hourglass_empty</span>
+                        </div>
+                        <span class="font-label-md text-label-md text-primary font-semibold uppercase tracking-wider">Analyzing documents...</span>
+                    </div>
+                </div>
+            `;
+            chatMessages.appendChild(loadingDiv);
+            chatContainer.scrollTop = chatContainer.scrollHeight;
+            
+            try {
+                const response = await fetch('/api/chat', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ query })
+                });
+                const data = await response.json();
+                
+                let rawAnswer = data.answer || "No response received.";
+                if (rawAnswer.includes("Source:")) {
+                    rawAnswer = rawAnswer.split("\n\nSource:")[0];
+                }
+                
+                let htmlContent = marked.parse(rawAnswer);
+                let role = data.is_refused ? 'error' : 'ai';
+                
+                // Only update the DOM if the user hasn't switched chats
+                if (currentChatId === activeChatId) {
+                    const loader = document.getElementById('loading-indicator');
+                    if (loader) loader.remove();
+                    addMessageDOM(htmlContent, role, true, data.source_url, data.footer);
+                }
+                
+                // Always save AI message to state for the correct chat
+                let freshSessionIndex = chatSessions.findIndex(c => c.id === activeChatId);
+                if (freshSessionIndex !== -1) {
+                    chatSessions[freshSessionIndex].messages.push({ 
+                        role: role, 
+                        content: htmlContent,
+                        sourceUrl: data.source_url,
+                        footer: data.footer
+                    });
+                    saveChats();
+                }
+                
+            } catch (e) {
+                if (currentChatId === activeChatId) {
+                    const loader = document.getElementById('loading-indicator');
+                    if (loader) loader.remove();
+                    addMessageDOM("An error occurred connecting to the AI server.", 'error');
+                }
+            }
+        }
+
+        sendBtn.addEventListener('click', sendMessage);
+        textarea.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' && !e.shiftKey) {
+                e.preventDefault();
+                sendMessage();
+            }
+        });
+        
+        // Initial render
+        renderSidebar();
+</script>
+
+
+
+
+</body></html>

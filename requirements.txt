@@ -1,0 +1,14 @@
+streamlit
+langchain
+langchain-groq
+langchain-community
+chromadb
+pypdf
+beautifulsoup4
+python-dotenv
+requests
+fastembed
+flask
+flask-cors
+markdownify
+gunicorn
