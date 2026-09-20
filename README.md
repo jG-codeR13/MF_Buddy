@@ -1,4 +1,4 @@
-# Mutual Fund AI Assistant (RAG Pipeline) 🚀
+# MF_Buddy - RAG based Mutual Fund Assistant
 
 A real-time Retrieval-Augmented Generation (RAG) chatbot designed to accurately answer mutual fund queries based strictly on scraped data from verified sources.
 
